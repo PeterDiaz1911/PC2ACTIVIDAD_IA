@@ -1,0 +1,4 @@
+problema,variable,cantidad_registros_afectados,tratamiento_aplicado,justificacion
+Duplicados exactos,dataset,25,Se eliminó una copia de cada fila idéntica,Las filas idénticas no aportan información adicional. Los 25 id_usuario repetidos en el archivo original corresponden a estas copias exactas.
+Rango inválido,edad,6,Se reemplazó por nulo para evitar edades imposibles,Se aplicó una regla determinista basada en el dominio del negocio y la escala esperada de cada variable.
+Rango inválido,horas_vistas_mes,4,Se reemplazó por nulo porque los valores negativos o extremos no son coherentes con el comportamiento observado,Se aplicó una regla determinista basada en el dominio del negocio y la escala esperada de cada variable.

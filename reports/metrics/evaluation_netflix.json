@@ -1,0 +1,208 @@
+{
+  "source": "data/raw/neflix.csv",
+  "generated_at_utc": "2026-10-19T18:09:38.317040+00:00",
+  "model_version": "1.0.0",
+  "model_artifact": "reports/models/netflix_churn_pipeline.joblib",
+  "threshold": 0.5,
+  "input_schema": [
+    {
+      "name": "edad",
+      "kind": "number",
+      "minimum": 16.0,
+      "maximum": 68.0,
+      "required": true
+    },
+    {
+      "name": "genero",
+      "kind": "category",
+      "options": [
+        "F",
+        "M"
+      ],
+      "required": true
+    },
+    {
+      "name": "pais",
+      "kind": "category",
+      "options": [
+        "Argentina",
+        "Chile",
+        "Colombia",
+        "Ecuador",
+        "Mexico",
+        "Peru"
+      ],
+      "required": true
+    },
+    {
+      "name": "plan",
+      "kind": "category",
+      "options": [
+        "Basico",
+        "Estandar",
+        "Premium"
+      ],
+      "required": true
+    },
+    {
+      "name": "precio_mensual_soles",
+      "kind": "number",
+      "minimum": 24.9,
+      "maximum": 44.9,
+      "required": true
+    },
+    {
+      "name": "meses_suscrito",
+      "kind": "number",
+      "minimum": 1.0,
+      "maximum": 72.0,
+      "required": true
+    },
+    {
+      "name": "metodo_pago",
+      "kind": "category",
+      "options": [
+        "Paypal",
+        "Tarjeta De Credito",
+        "Tarjeta De Debito",
+        "Yape/Plin"
+      ],
+      "required": true
+    },
+    {
+      "name": "dispositivo_principal",
+      "kind": "category",
+      "options": [
+        "Celular",
+        "Consola",
+        "Laptop",
+        "Smart Tv",
+        "Tablet"
+      ],
+      "required": true
+    },
+    {
+      "name": "perfiles_activos",
+      "kind": "number",
+      "minimum": 1.0,
+      "maximum": 4.0,
+      "required": true
+    },
+    {
+      "name": "genero_favorito",
+      "kind": "category",
+      "options": [
+        "Accion",
+        "Anime",
+        "Ciencia Ficcion",
+        "Comedia",
+        "Documental",
+        "Drama",
+        "Romance",
+        "Terror"
+      ],
+      "required": true
+    },
+    {
+      "name": "horas_vistas_mes",
+      "kind": "number",
+      "minimum": 4.7,
+      "maximum": 136.2,
+      "required": true
+    },
+    {
+      "name": "dias_desde_ultimo_acceso",
+      "kind": "number",
+      "minimum": 0.0,
+      "maximum": 59.0,
+      "required": true
+    },
+    {
+      "name": "titulos_completados_mes",
+      "kind": "number",
+      "minimum": 0.0,
+      "maximum": 38.0,
+      "required": true
+    },
+    {
+      "name": "calificacion_promedio",
+      "kind": "number",
+      "minimum": 1.3,
+      "maximum": 5.0,
+      "required": true
+    },
+    {
+      "name": "tickets_soporte",
+      "kind": "number",
+      "minimum": 0.0,
+      "maximum": 5.0,
+      "required": true
+    },
+    {
+      "name": "usa_descargas",
+      "kind": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "required": true
+    },
+    {
+      "name": "pct_vistas_por_recomendacion",
+      "kind": "number",
+      "minimum": 0.0,
+      "maximum": 100.0,
+      "required": true
+    }
+  ],
+  "split": {
+    "train_fraction": 0.75,
+    "test_fraction": 0.25,
+    "random_state": 42,
+    "stratified": true
+  },
+  "excluded_predictors": {
+    "id_usuario": "Identificador; no aporta una señal generalizable y podría memorizar usuarios.",
+    "fecha_registro": "No hay fecha de corte documentada; no se calcula antigüedad ni se usa como predictor."
+  },
+  "positive_class": 1,
+  "test_rows": 1250,
+  "test_class_counts": {
+    "0": 971,
+    "1": 279
+  },
+  "models": [
+    {
+      "modelo": "DummyClassifier",
+      "accuracy": 0.7768,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "train_cv_f1_mean": 0.0,
+      "train_cv_f1_std": 0.0
+    },
+    {
+      "modelo": "LogisticRegression",
+      "accuracy": 0.8312,
+      "precision": 0.6888888888888889,
+      "recall": 0.4444444444444444,
+      "f1": 0.5403050108932462,
+      "train_cv_f1_mean": 0.5470718786749178,
+      "train_cv_f1_std": 0.03693445033722285
+    },
+    {
+      "modelo": "RandomForestClassifier",
+      "accuracy": 0.8208,
+      "precision": 0.7477477477477478,
+      "recall": 0.2974910394265233,
+      "f1": 0.4256410256410256,
+      "train_cv_f1_mean": 0.44140091208684795,
+      "train_cv_f1_std": 0.0576005163091622
+    }
+  ],
+  "selected_for_permutation_importance": "LogisticRegression",
+  "permutation_importance": {
+    "dataset": "entrenamiento",
+    "scoring": "f1",
+    "interpretation": "La importancia predictiva no demuestra causalidad."
+  },
+  "temporal_limitation": "El CSV no documenta cuándo se midieron las variables respecto a la cancelación. Para una predicción futura, solo deben usarse variables disponibles antes de cancelar."
+}

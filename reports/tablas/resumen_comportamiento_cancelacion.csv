@@ -1,0 +1,5 @@
+,horas_vistas_mes,horas_vistas_mes,dias_desde_ultimo_acceso,dias_desde_ultimo_acceso,calificacion_promedio,calificacion_promedio,tickets_soporte,tickets_soporte
+,count,median,count,median,count,median,count,median
+cancelo,,,,,,,,
+No cancela,3824,33.7,3884,4.0,3735,3.7,3884,0.0
+Sí cancela,1097,23.2,1116,7.0,1065,3.4,1116,0.0

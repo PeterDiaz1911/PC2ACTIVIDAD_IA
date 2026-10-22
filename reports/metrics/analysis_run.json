@@ -1,0 +1,28 @@
+{
+  "generated_at_utc": "2026-10-19T18:09:38.461858+00:00",
+  "source": "data/raw/neflix.csv",
+  "source_sha256": "eaf9e754660a232f2dcdad86eb38ca820ffe9bd9f933995649a5f72264d25521",
+  "original_rows": 5025,
+  "clean_rows": 5000,
+  "target_valid_rows": 5000,
+  "model_version": "1.0.0",
+  "model_artifact": "reports/models/netflix_churn_pipeline.joblib",
+  "metrics_file": "reports/metrics/metricas_modelos.csv",
+  "figures": [
+    "reports/figures/01_distribucion_cancelaciones.png",
+    "reports/figures/02_tasa_cancelacion_plan.png",
+    "reports/figures/03_tasa_cancelacion_pais.png",
+    "reports/figures/04_tasa_cancelacion_metodo_pago.png",
+    "reports/figures/05_tasa_cancelacion_dispositivo.png",
+    "reports/figures/06_comparacion_cancelacion.png"
+  ],
+  "presentation": "reports/presentacion_netflix.pptx",
+  "best_test_f1": 0.5403050108932462,
+  "top_predictive_features": [
+    "horas_vistas_mes",
+    "dias_desde_ultimo_acceso",
+    "precio_mensual_soles",
+    "calificacion_promedio",
+    "tickets_soporte"
+  ]
+}

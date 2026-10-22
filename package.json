@@ -1,0 +1,20 @@
+{
+  "name": "netflix-churn-analytics",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names API,WEB --prefix-colors red,cyan \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "dev:backend": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\backend.ps1",
+    "dev:frontend": "npm run dev --workspace netflix-churn-analytics-frontend -- --host 127.0.0.1",
+    "build": "npm run build --workspace netflix-churn-analytics-frontend",
+    "analysis": ".venv\\Scripts\\python.exe -m src.analisis",
+    "test": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\test.ps1",
+    "install:python": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts\\install_python.ps1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
