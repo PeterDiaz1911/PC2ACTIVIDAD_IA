@@ -76,7 +76,7 @@ FastAPI publica estado, resumen, calidad, filtros/segmentos, métricas, factores
 
 ## Publicación en internet
 
-La configuración `vercel.json` publica el frontend Vite y la API FastAPI como **Services** en un único proyecto Vercel: `/api/*` se enruta a `pc2actividad-ia-api` y el resto de las rutas a `frontend`. GitHub Pages no puede ejecutar el backend de Python.
+La configuración `vercel.json` publica el frontend Vite y la API FastAPI como **Services** en un único proyecto Vercel: `/api/*` se enruta a `pcactividad-ia-api` y el resto de las rutas a `frontend`. GitHub Pages no puede ejecutar el backend de Python.
 
 1. En Vercel, importa este repositorio y selecciona **Services** para desplegar las aplicaciones detectadas en un solo proyecto; no las importes como proyectos independientes.
 2. Mantén la raíz de configuración en la raíz del repositorio para que Vercel lea `vercel.json`. Despliega ambos servicios y abre el dominio asignado al proyecto.
