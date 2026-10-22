@@ -1,6 +1,8 @@
 # Netflix Churn Analytics
 
-Dashboard local para analizar cancelaciones de suscripciones del caso académico “¿Quién va a cancelar Netflix?”. Es un proyecto académico no oficial y no está afiliado con Netflix. No reproduce contenido multimedia.
+Aplicación web académica para analizar cancelaciones de suscripciones del caso “¿Quién va a cancelar Netflix?”. Puede ejecutarse localmente o desplegarse en Vercel. No es oficial ni está afiliada con Netflix; no reproduce contenido multimedia.
+
+Consulta la [guía técnica del proyecto](docs/GUIA_TECNICA.md) para ver diagramas de arquitectura y una explicación del flujo de datos, backend, frontend, análisis, modelos y despliegue.
 
 El único origen de datos es `data/raw/neflix.csv` (se conserva su nombre original). La aplicación no consulta servicios externos ni depende de Google Colab.
 
