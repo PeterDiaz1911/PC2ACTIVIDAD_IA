@@ -74,6 +74,17 @@ La clase positiva es `cancelo=1`. Las métricas describen la partición de prueb
 
 FastAPI publica estado, resumen, calidad, filtros/segmentos, métricas, factores, predicción (si hay modelo) y descargas por identificadores permitidos. No acepta rutas de archivos arbitrarias. Si faltan resultados, la aplicación informa “Análisis pendiente”; desde la raíz ejecuta `npm run analysis`.
 
+## Publicación en internet
+
+La aplicación usa Vercel para la página y Render para la API; GitHub Pages no puede ejecutar el backend de Python.
+
+1. En Render, crea un **Blueprint** desde este repositorio y confirma el servicio definido en `render.yaml`. Cuando lo solicite, configura `FRONTEND_ORIGINS` con la URL pública de Vercel (por ejemplo, `https://pc2actividad-ia.vercel.app`).
+2. En Vercel, importa este repositorio y deja la raíz del proyecto en la raíz del repositorio para que use `vercel.json`.
+3. En las variables de entorno de Vercel, configura `VITE_API_BASE_URL` con la URL del servicio Render seguida de `/api` (por ejemplo, `https://pc2actividad-ia-api.onrender.com/api`) y vuelve a desplegar.
+4. Abre la URL de Vercel. Para comprobar la API, visita `https://<servicio-render>.onrender.com/api/health`.
+
+Si cambia el dominio de Vercel, actualiza `FRONTEND_ORIGINS` en Render. En Render gratuito, la API puede tardar unos segundos en responder después de un periodo sin uso.
+
 ## Google Colab
 
 El error `TypeError: Failed to fetch` cuya traza procede de `colaboratory-static` no se puede reproducir ni verificar sin acceso a la sesión de Colab. No se atribuye a ZMQ o npm. La ejecución local de esta aplicación y su pipeline no dependen de Colab.

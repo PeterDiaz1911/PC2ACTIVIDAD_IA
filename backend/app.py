@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 from typing import Any
 
@@ -45,9 +46,15 @@ app = FastAPI(
     version='1.0.0',
     description='API local para consultar resultados calculados del caso académico de cancelaciones.',
 )
+cors_origins = ['http://127.0.0.1:5173', 'http://localhost:5173']
+cors_origins.extend(
+    origin.strip()
+    for origin in os.getenv('FRONTEND_ORIGINS', '').split(',')
+    if origin.strip()
+)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://127.0.0.1:5173', 'http://localhost:5173'],
+    allow_origins=list(dict.fromkeys(cors_origins)),
     allow_credentials=False,
     allow_methods=['GET', 'POST'],
     allow_headers=['Content-Type'],

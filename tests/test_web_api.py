@@ -18,6 +18,28 @@ def test_health_and_summary_serve_pipeline_results():
     assert summary.json()['cancellations'] + summary.json()['not_cancelled'] == 5000
 
 
+def test_cors_allows_local_frontend_and_rejects_unknown_origins():
+    allowed = client.options(
+        '/api/health',
+        headers={
+            'Origin': 'http://localhost:5173',
+            'Access-Control-Request-Method': 'GET',
+        },
+    )
+    rejected = client.options(
+        '/api/health',
+        headers={
+            'Origin': 'https://unexpected.example',
+            'Access-Control-Request-Method': 'GET',
+        },
+    )
+
+    assert allowed.status_code == 200
+    assert allowed.headers['access-control-allow-origin'] == 'http://localhost:5173'
+    assert rejected.status_code == 400
+    assert 'access-control-allow-origin' not in rejected.headers
+
+
 def test_filters_update_segment_count_and_include_valid_groups():
     filters = client.get('/api/filters').json()
     assert filters['status'] == 'ready'
