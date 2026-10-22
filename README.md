@@ -76,14 +76,13 @@ FastAPI publica estado, resumen, calidad, filtros/segmentos, métricas, factores
 
 ## Publicación en internet
 
-La aplicación usa Vercel para la página y Render para la API; GitHub Pages no puede ejecutar el backend de Python.
+La configuración `vercel.json` publica el frontend Vite y la API FastAPI como **Services** en un único proyecto Vercel: `/api/*` se enruta a `pc2actividad-ia-api` y el resto de las rutas a `frontend`. GitHub Pages no puede ejecutar el backend de Python.
 
-1. En Vercel, importa este repositorio y deja la raíz del proyecto en la raíz del repositorio para que use `vercel.json`. Haz el primer despliegue y copia la URL pública que te asigne.
-2. En Render, crea un **Blueprint** desde este repositorio y confirma el servicio definido en `render.yaml`. Cuando lo solicite, configura `FRONTEND_ORIGINS` con la URL pública de Vercel (por ejemplo, `https://pc2actividad-ia.vercel.app`).
-3. Copia la URL del servicio Render. En las variables de entorno de Vercel, configura `VITE_API_BASE_URL` con esa URL seguida de `/api` (por ejemplo, `https://pc2actividad-ia-api.onrender.com/api`) y vuelve a desplegar.
-4. Abre la URL de Vercel. Para comprobar la API, visita `https://<servicio-render>.onrender.com/api/health`.
+1. En Vercel, importa este repositorio y selecciona **Services** para desplegar las aplicaciones detectadas en un solo proyecto; no las importes como proyectos independientes.
+2. Mantén la raíz de configuración en la raíz del repositorio para que Vercel lea `vercel.json`. Despliega ambos servicios y abre el dominio asignado al proyecto.
+3. La web ya usa `/api` en el mismo dominio; no hace falta configurar `VITE_API_BASE_URL` ni un binding de servicio.
 
-Si cambia el dominio de Vercel, actualiza `FRONTEND_ORIGINS` en Render. En Render gratuito, la API puede tardar unos segundos en responder después de un periodo sin uso.
+Como alternativa separada, `render.yaml` permite alojar la API en Render. En ese caso, configura `VITE_API_BASE_URL` en Vercel con la URL de Render seguida de `/api` y `FRONTEND_ORIGINS` en Render con el dominio de la web. En Render gratuito, la API puede tardar unos segundos en responder después de un periodo sin uso.
 
 ## Google Colab
 
